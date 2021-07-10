@@ -1,0 +1,13 @@
+
+create or replace trigger DAILY_LOG
+after insert or delete or update ON LOG
+for each row
+enable
+declare
+v_MID varchar2(15);
+begin
+select
+MEMBER into v_MID from dual;
+DBMS_OUTPUT.PUT_LINE('UPDATED WEIGHT: '||:new.weight_in_kgs|| 'OLD WEIGHT: '||:old.weight_in_kgs);
+END;
+ /
